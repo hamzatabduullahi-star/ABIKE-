@@ -1,6 +1,6 @@
 /* ==========================================
-   ABIKE LOVE ❤️
-   INTERACTIVE ROMANTIC EXPERIENCE
+   ABIKE LOVE
+   COMPLETE INTERACTIVE ENGINE
 ========================================== */
 
 
@@ -23,15 +23,15 @@ window.addEventListener("load", () => {
    2. SURPRISE BUTTON
 ========================================== */
 
-const surpriseBtn = document.getElementById("surpriseBtn");
+const surpriseBtn =
+    document.getElementById("surpriseBtn");
 
 surpriseBtn.addEventListener("click", () => {
 
-    const loveSection = document.getElementById("loveSection");
-
-    loveSection.scrollIntoView({
-        behavior: "smooth"
-    });
+    document.getElementById("loveSection")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
 
     createHeartExplosion();
 
@@ -42,8 +42,11 @@ surpriseBtn.addEventListener("click", () => {
    3. SECRET MESSAGE
 ========================================== */
 
-const secretBtn = document.getElementById("secretBtn");
-const secretMessage = document.getElementById("secretMessage");
+const secretBtn =
+    document.getElementById("secretBtn");
+
+const secretMessage =
+    document.getElementById("secretMessage");
 
 secretBtn.addEventListener("click", () => {
 
@@ -57,7 +60,8 @@ secretBtn.addEventListener("click", () => {
 
     } else {
 
-        secretBtn.textContent = "DISCOVER MY SECRET 💌";
+        secretBtn.textContent =
+            "DISCOVER MY SECRET 💌";
 
     }
 
@@ -65,11 +69,14 @@ secretBtn.addEventListener("click", () => {
 
 
 /* ==========================================
-   4. INTERACTIVE HEART COUNTER
+   4. HEART COUNTER
 ========================================== */
 
-const heartBtn = document.getElementById("heartBtn");
-const heartCount = document.getElementById("heartCount");
+const heartBtn =
+    document.getElementById("heartBtn");
+
+const heartCount =
+    document.getElementById("heartCount");
 
 let totalHearts = 0;
 
@@ -78,7 +85,9 @@ heartBtn.addEventListener("click", () => {
     totalHearts++;
 
     heartCount.textContent =
-        `${totalHearts} ${totalHearts === 1 ? "heart" : "hearts"} sent`;
+        `${totalHearts} ${
+            totalHearts === 1 ? "heart" : "hearts"
+        } sent`;
 
     createFloatingHeart();
 
@@ -96,14 +105,22 @@ function createFloatingHeart() {
 
     const heart = document.createElement("div");
 
-    const hearts = ["❤️", "💕", "💗", "💖", "💘", "💝"];
+    const hearts = [
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "💘",
+        "💝"
+    ];
 
     heart.classList.add("floating-heart");
 
     heart.textContent =
         hearts[Math.floor(Math.random() * hearts.length)];
 
-    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.left =
+        Math.random() * 100 + "vw";
 
     heart.style.fontSize =
         Math.random() * 25 + 15 + "px";
@@ -153,48 +170,118 @@ setInterval(() => {
 
 
 /* ==========================================
-   8. PARTICLE UNIVERSE
+   8. INFINITE ABIKE LOVE WALL
 ========================================== */
 
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
+function generateInfiniteLove() {
+
+    const trackIds = [
+        "loveTrack1",
+        "loveTrack2",
+        "loveTrack3"
+    ];
+
+    trackIds.forEach(id => {
+
+        const track =
+            document.getElementById(id);
+
+        if (!track) return;
+
+        const message =
+            "I LOVE YOU ABIKE ❤️";
+
+        /*
+           Two identical groups create
+           a continuous scrolling effect.
+        */
+
+        for (let group = 0; group < 2; group++) {
+
+            for (let i = 0; i < 18; i++) {
+
+                const text =
+                    document.createElement("span");
+
+                text.textContent = message;
+
+                track.appendChild(text);
+
+            }
+
+        }
+
+    });
+
+}
+
+generateInfiniteLove();
+
+
+/* ==========================================
+   9. GOLDEN PARTICLE UNIVERSE
+========================================== */
+
+const canvas =
+    document.getElementById("particles");
+
+const ctx =
+    canvas.getContext("2d");
 
 let particles = [];
 
 function resizeCanvas() {
 
-    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    const ratio =
+        Math.min(window.devicePixelRatio || 1, 2);
 
-    canvas.width = window.innerWidth * ratio;
-    canvas.height = window.innerHeight * ratio;
+    canvas.width =
+        window.innerWidth * ratio;
 
-    canvas.style.width = window.innerWidth + "px";
-    canvas.style.height = window.innerHeight + "px";
+    canvas.height =
+        window.innerHeight * ratio;
 
-    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    canvas.style.width =
+        window.innerWidth + "px";
+
+    canvas.style.height =
+        window.innerHeight + "px";
+
+    ctx.setTransform(
+        ratio,
+        0,
+        0,
+        ratio,
+        0,
+        0
+    );
 
 }
 
 resizeCanvas();
-
-window.addEventListener("resize", resizeCanvas);
 
 
 class Particle {
 
     constructor() {
 
-        this.x = Math.random() * window.innerWidth;
+        this.x =
+            Math.random() * window.innerWidth;
 
-        this.y = Math.random() * window.innerHeight;
+        this.y =
+            Math.random() * window.innerHeight;
 
-        this.size = Math.random() * 2 + 0.5;
+        this.size =
+            Math.random() * 2 + 0.5;
 
-        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedX =
+            (Math.random() - 0.5) * 0.5;
 
-        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.speedY =
+            (Math.random() - 0.5) * 0.5;
 
-        this.opacity = Math.random();
+        this.opacity =
+            Math.random();
 
     }
 
@@ -204,11 +291,17 @@ class Particle {
 
         this.y += this.speedY;
 
-        if (this.x < 0 || this.x > window.innerWidth) {
+        if (
+            this.x < 0 ||
+            this.x > window.innerWidth
+        ) {
             this.speedX *= -1;
         }
 
-        if (this.y < 0 || this.y > window.innerHeight) {
+        if (
+            this.y < 0 ||
+            this.y > window.innerHeight
+        ) {
             this.speedY *= -1;
         }
 
@@ -227,11 +320,11 @@ class Particle {
         );
 
         ctx.fillStyle =
-            `rgba(255, 182, 213, ${this.opacity})`;
+            `rgba(255,215,100,${this.opacity})`;
 
         ctx.shadowBlur = 12;
 
-        ctx.shadowColor = "#ff4f9a";
+        ctx.shadowColor = "#d4af37";
 
         ctx.fill();
 
@@ -260,8 +353,6 @@ function initializeParticles() {
 
 initializeParticles();
 
-window.addEventListener("resize", initializeParticles);
-
 
 function animateParticles() {
 
@@ -287,8 +378,17 @@ function animateParticles() {
 animateParticles();
 
 
+window.addEventListener("resize", () => {
+
+    resizeCanvas();
+
+    initializeParticles();
+
+});
+
+
 /* ==========================================
-   9. MOUSE / TOUCH HEART TRAIL
+   10. HEART TRAIL
 ========================================== */
 
 let lastTrailTime = 0;
@@ -301,9 +401,10 @@ function createHeartTrail(x, y) {
 
     lastTrailTime = now;
 
-    const heart = document.createElement("span");
+    const heart =
+        document.createElement("span");
 
-    heart.textContent = "💗";
+    heart.textContent = "💛";
 
     heart.style.position = "fixed";
 
@@ -317,7 +418,8 @@ function createHeartTrail(x, y) {
 
     heart.style.fontSize = "16px";
 
-    heart.style.transition = "all 1s ease";
+    heart.style.transition =
+        "all 1s ease";
 
     document.body.appendChild(heart);
 
@@ -330,14 +432,19 @@ function createHeartTrail(x, y) {
 
     });
 
-    setTimeout(() => heart.remove(), 1100);
+    setTimeout(() => {
+        heart.remove();
+    }, 1100);
 
 }
 
 
 document.addEventListener("mousemove", event => {
 
-    createHeartTrail(event.clientX, event.clientY);
+    createHeartTrail(
+        event.clientX,
+        event.clientY
+    );
 
 });
 
@@ -347,26 +454,31 @@ document.addEventListener("touchmove", event => {
     const touch = event.touches[0];
 
     if (touch) {
-        createHeartTrail(touch.clientX, touch.clientY);
+
+        createHeartTrail(
+            touch.clientX,
+            touch.clientY
+        );
+
     }
 
 }, { passive: true });
 
 
 /* ==========================================
-   10. WELCOME CONSOLE MESSAGE
+   11. CONSOLE MESSAGE
 ========================================== */
 
 console.log(
-    "%c A LITTLE UNIVERSE FOR ABIKE ❤️ ",
-    "background:#ff4f9a;color:white;padding:15px;font-size:18px;"
+    "%c ABIKE LOVE ❤️ ",
+    "background:#d4af37;color:black;padding:15px;font-size:20px;"
 );
 
 console.log(
-    "Every little detail was created with affection 💕"
+    "A universe created with affection for Abike."
 );
 
 
 /* ==========================================
-   ABIKE LOVE — END OF SCRIPT
+   END OF ABIKE LOVE ENGINE
 ========================================== */
